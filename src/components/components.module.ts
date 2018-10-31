@@ -7,19 +7,25 @@ import { BottomComponentComponent } from './bottom-component/bottom-component.co
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardContentComponent } from './card-content/card-content.component';
 
 @NgModule({
+  entryComponents: [
+    CardContentComponent
+  ],
   declarations: [
     HeaderComponent,
     ContentComponent,
     DashboardComponent,
-    BottomComponentComponent
+    BottomComponentComponent,
+    CardContentComponent
   ],
   exports: [
     HeaderComponent,
     ContentComponent,
     DashboardComponent,
-    BottomComponentComponent
+    BottomComponentComponent,
+    CardContentComponent
   ],
   imports: [
     LayoutModule,
