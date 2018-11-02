@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef, ComponentFactoryResolver, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewContainerRef, ComponentFactoryResolver, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointState, BreakpointObserver } from '@angular/cdk/layout';
 import { CardContentComponent } from '../card-content/card-content.component';
@@ -14,7 +14,8 @@ export class DashboardComponent implements AfterViewInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private componentFactoryResolver: ComponentFactoryResolver
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   /** Based on the screen size, switch from standard to one column per row */
@@ -46,6 +47,7 @@ export class DashboardComponent implements AfterViewInit {
 
     this.addComponent(CardContentComponent, this.viewContainerRefCard1, 'card 1 content');
     this.addComponent(CardContentComponent, this.viewContainerRefCard2, 'card 2 content');
+    this.cdRef.detectChanges();
   }
 
   addComponent(component, viewContainerRef, componentInput) {
